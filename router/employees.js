@@ -29,6 +29,7 @@ router.get("/profile/:id", verifyToken, (req, res) => {
   
         const employee = result[0];
         res.json({ employee });
+        console.log(employee)
       }
     );
   });
