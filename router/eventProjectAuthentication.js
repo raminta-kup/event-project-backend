@@ -30,7 +30,7 @@ router.post("/register", (req, res) => {
 
 router.post("/signin", (req, res) => {
   const { body } = req;
-  const { email: signinEmail, password } = body;
+  const { email: signinEmail, password} = body;
 
   const incorrectCredentialsResponse = () =>
     res.json({
@@ -52,7 +52,6 @@ router.post("/signin", (req, res) => {
         const employee = result[0];
         const isPasswordCorrect = bcrypt.compareSync(password, employee.password);
         const { id, email } = employee;
-
         if (isPasswordCorrect) {
           const token = jwt.sign({ id, email }, process.env.JWT_SECRET);
           res.json({
